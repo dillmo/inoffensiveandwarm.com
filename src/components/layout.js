@@ -1,50 +1,44 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import { Helmet } from "react-helmet"
+import "typeface-roboto"
+import { Container, CssBaseline } from "@material-ui/core"
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles"
 
 import Header from "./header"
 import "./layout.css"
 
-const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
+const theme = createMuiTheme({
+  palette: {
+    type: "dark",
+    primary: {
+      light: "#ffac33",
+      main: "#ff9800",
+      dark: "#b26a00",
+    },
+    secondary: {
+      light: "#ffee33",
+      main: "#ffea00",
+      dark: "#b2a300",
+    },
+  },
+})
+
+const Layout = ({ appBarTitle, children }) => {
+  const [title, setTitle] = useState("")
 
   return (
-    <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
-    </>
+    <ThemeProvider theme={theme}>
+      <Helmet onChangeClientState={({ title }) => setTitle(title)} />
+      <CssBaseline />
+      <Header title={appBarTitle ?? title} />
+      <Container fixed>{children}</Container>
+    </ThemeProvider>
   )
 }
 
 Layout.propTypes = {
+  appBarTitle: PropTypes.string,
   children: PropTypes.node.isRequired,
 }
 

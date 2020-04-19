@@ -1,42 +1,69 @@
-import { Link } from "gatsby"
 import PropTypes from "prop-types"
-import React from "react"
+import React, { useState } from "react"
+import {
+  AppBar,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Toolbar,
+  Typography,
+} from "@material-ui/core"
+import { makeStyles } from "@material-ui/core/styles"
+import MenuIcon from "@material-ui/icons/Menu"
+import HomeIcon from "@material-ui/icons/Home"
+import BookIcon from "@material-ui/icons/Book"
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
-)
+import { handleButtonEvent } from "../util"
+import NavDrawer from "./navDrawer"
+
+const useStyles = makeStyles(theme => ({
+  offset: theme.mixins.toolbar,
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  drawerList: {
+    width: "80vw",
+    maxWidth: "16rem",
+  },
+}))
+
+const Header = ({ title }) => {
+  const classes = useStyles()
+
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+  const toggleDrawer = handleButtonEvent(setIsDrawerOpen)
+
+  return (
+    <>
+      <AppBar>
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="menu"
+            className={classes.menuButton}
+            onClick={toggleDrawer(true)}
+            onKeyDown={toggleDrawer(true)}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6">{title}</Typography>
+        </Toolbar>
+      </AppBar>
+      <NavDrawer open={isDrawerOpen} onClose={toggleDrawer(false)} />
+      <div className={classes.offset} />
+    </>
+  )
+}
 
 Header.propTypes = {
-  siteTitle: PropTypes.string,
+  title: PropTypes.string,
 }
 
 Header.defaultProps = {
-  siteTitle: ``,
+  title: "",
 }
 
 export default Header
