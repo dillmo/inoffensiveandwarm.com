@@ -33,7 +33,10 @@ const Layout = ({ appBarTitle, children }) => {
   return (
     <StrictMode>
       <ThemeProvider theme={theme}>
-        <Helmet onChangeClientState={({ title }) => setTitle(title)} />
+        <Helmet
+          onChangeClientState={({ title }) => setTitle(title)}
+          htmlAttributes={{ lang: "en" }}
+        />
         <CssBaseline />
         <Header title={appBarTitle ?? title} />
         <Container fixed>{children}</Container>
