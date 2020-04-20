@@ -1,6 +1,5 @@
 import React from "react"
 import { graphql, navigate } from "gatsby"
-import { Helmet } from "react-helmet-async"
 import {
   Button,
   Card,
@@ -11,6 +10,7 @@ import {
 
 import { handleButtonEvent } from "../util"
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 
 const handleNavigate = handleButtonEvent(navigate)
 
@@ -20,7 +20,7 @@ export default ({
   },
 }) => (
   <Layout>
-    <Helmet title="Blog" />
+    <SEO title="Blog" description="Posts on Dillon Morse's blog" />
     {nodes.map(({ excerpt, frontmatter: { path, title } }) => (
       <Card key={title}>
         <CardContent>
