@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import { Link, Typography } from "@material-ui/core"
 import Img from "gatsby-image"
-import { Helmet } from "react-helmet"
+import { Helmet } from "react-helmet-async"
 
 import Layout from "../components/layout"
 

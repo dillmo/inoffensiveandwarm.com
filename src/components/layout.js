@@ -1,14 +1,17 @@
-import React, { useState } from "react"
+import React, { StrictMode, useState } from "react"
 import PropTypes from "prop-types"
-import { Helmet } from "react-helmet"
+import { Helmet } from "react-helmet-async"
 import "typeface-roboto"
 import { Container, CssBaseline } from "@material-ui/core"
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles"
+import {
+  unstable_createMuiStrictModeTheme,
+  ThemeProvider,
+} from "@material-ui/core/styles"
 
 import Header from "./header"
 import "./layout.css"
 
-const theme = createMuiTheme({
+const theme = unstable_createMuiStrictModeTheme({
   palette: {
     type: "dark",
     primary: {
@@ -28,12 +31,14 @@ const Layout = ({ appBarTitle, children }) => {
   const [title, setTitle] = useState("")
 
   return (
-    <ThemeProvider theme={theme}>
-      <Helmet onChangeClientState={({ title }) => setTitle(title)} />
-      <CssBaseline />
-      <Header title={appBarTitle ?? title} />
-      <Container fixed>{children}</Container>
-    </ThemeProvider>
+    <StrictMode>
+      <ThemeProvider theme={theme}>
+        <Helmet onChangeClientState={({ title }) => setTitle(title)} />
+        <CssBaseline />
+        <Header title={appBarTitle ?? title} />
+        <Container fixed>{children}</Container>
+      </ThemeProvider>
+    </StrictMode>
   )
 }
 

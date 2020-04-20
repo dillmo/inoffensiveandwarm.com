@@ -5,7 +5,7 @@ module.exports = {
     author: `Dillon Morse`,
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
+    "@rhysforyou/gatsby-plugin-react-helmet-async",
     {
       resolve: `gatsby-source-filesystem`,
       options: {

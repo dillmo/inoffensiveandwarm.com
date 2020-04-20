@@ -1,20 +1,8 @@
 import PropTypes from "prop-types"
 import React, { useState } from "react"
-import {
-  AppBar,
-  IconButton,
-  Drawer,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  Toolbar,
-  Typography,
-} from "@material-ui/core"
+import { AppBar, IconButton, Toolbar, Typography } from "@material-ui/core"
 import { makeStyles } from "@material-ui/core/styles"
 import MenuIcon from "@material-ui/icons/Menu"
-import HomeIcon from "@material-ui/icons/Home"
-import BookIcon from "@material-ui/icons/Book"
 
 import { handleButtonEvent } from "../util"
 import NavDrawer from "./navDrawer"

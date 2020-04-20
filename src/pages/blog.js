@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql, navigate } from "gatsby"
-import { Helmet } from "react-helmet"
+import { Helmet } from "react-helmet-async"
 import {
   Button,
   Card,
