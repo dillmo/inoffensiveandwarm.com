@@ -18,13 +18,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Inoffensive and Warm`,
+        short_name: `I & W`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#ff9800`,
+        theme_color: `#ff9800`,
         display: `minimal-ui`,
-        icon: `src/images/icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/icon.png`,
       },
     },
     {
@@ -42,5 +42,6 @@ module.exports = {
       },
     },
     "gatsby-transformer-remark",
+    "gatsby-plugin-offline",
   ],
 }
