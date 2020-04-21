@@ -39,7 +39,7 @@ export const pageQuery = graphql`
   query($image: String!, $path: String!) {
     file(relativePath: { eq: $image }) {
       childImageSharp {
-        fluid {
+        fluid(srcSetBreakpoints: [400, 600, 960, 1280]) {
           ...GatsbyImageSharpFluid
         }
       }
