@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql, navigate } from "gatsby"
+import { graphql, Link as GatsbyLink } from "gatsby"
 import {
   Button,
   Card,
@@ -8,11 +8,8 @@ import {
   Typography,
 } from "@material-ui/core"
 
-import { handleButtonEvent } from "../util"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-
-const handleNavigate = handleButtonEvent(navigate)
 
 export default ({
   data: {
@@ -28,10 +25,7 @@ export default ({
           <Typography variant="body1">{excerpt}</Typography>
         </CardContent>
         <CardActions>
-          <Button
-            onClick={handleNavigate(path)}
-            onKeyDown={handleNavigate(path)}
-          >
+          <Button component={GatsbyLink} to={path}>
             Read More
           </Button>
         </CardActions>

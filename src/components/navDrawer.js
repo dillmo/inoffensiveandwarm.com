@@ -1,5 +1,5 @@
 import React from "react"
-import { navigate } from "gatsby"
+import { Link as GatsbyLink } from "gatsby"
 import {
   Drawer,
   List,
@@ -11,8 +11,6 @@ import { makeStyles } from "@material-ui/core/styles"
 import HomeIcon from "@material-ui/icons/Home"
 import BookIcon from "@material-ui/icons/Book"
 
-import { handleButtonEvent } from "../util"
-
 const useStyles = makeStyles(() => ({
   list: {
     width: "80vw",
@@ -20,29 +18,19 @@ const useStyles = makeStyles(() => ({
   },
 }))
 
-const handleNavigate = handleButtonEvent(navigate)
-
 export default ({ onClose, open }) => {
   const classes = useStyles()
 
   return (
     <Drawer anchor="left" open={open} onClose={onClose}>
       <List className={classes.list}>
-        <ListItem
-          button
-          onClick={handleNavigate("/")}
-          onKeyDown={handleNavigate("/")}
-        >
+        <ListItem button component={GatsbyLink} to={"/"}>
           <ListItemIcon>
             <HomeIcon />
           </ListItemIcon>
           <ListItemText primary="Home" />
         </ListItem>
-        <ListItem
-          button
-          onClick={handleNavigate("/blog")}
-          onKeyDown={handleNavigate("/blog")}
-        >
+        <ListItem button component={GatsbyLink} to={"/blog"}>
           <ListItemIcon>
             <BookIcon />
           </ListItemIcon>
