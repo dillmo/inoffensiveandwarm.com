@@ -2,10 +2,13 @@ import React from "react"
 import { graphql } from "gatsby"
 import { Grid, Link, Typography } from "@material-ui/core"
 import Img from "gatsby-image"
+import loadable from "@loadable/component"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import BlogPostListing from "../components/blogPostListing"
+import ErrorBoundary from "../components/errorBoundary"
+
+const BlogPostListing = loadable(() => import("../components/blogPostListing"))
 
 const chopUriPrefix = str => str?.match(/\w+:\/\/(.*)/)?.[1]
 
@@ -41,7 +44,9 @@ export default ({
         <Typography variant="h5" paragraph>
           More Posts
         </Typography>
-        <BlogPostListing posts={nodes} />
+        <ErrorBoundary>
+          <BlogPostListing posts={nodes} fadeIn />
+        </ErrorBoundary>
       </Grid>
     </Grid>
   </Layout>
