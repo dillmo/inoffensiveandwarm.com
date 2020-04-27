@@ -44,5 +44,13 @@ module.exports = {
     "gatsby-transformer-remark",
     "gatsby-plugin-offline",
     "gatsby-plugin-styled-components",
+    {
+      resolve: "gatsby-plugin-react-svg",
+      options: {
+        rule: {
+          include: /icons/,
+        },
+      },
+    },
   ],
 }

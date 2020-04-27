@@ -1,7 +1,7 @@
 ---
 path: "/blog/legitimate"
 date: "2020-04-19"
-title: "My first blog post"
+title: "Legitimate"
 image: "undraw_code_thinking_1jeh.png"
 imageCredit: Katerina Limpitsouni
 imageCreditLink: https://undraw.co

@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
 
@@ -32,21 +32,80 @@ const HeroImage = styled(Img)`
   }
 `
 
+const Blog = styled.section`
+  & {
+    background-color: #e8e6e1;
+    padding: 4px 24px;
+  }
+`
+
+const BlogPostCard = styled.div`
+  & {
+    background-color: #faf9f7;
+    margin: 24px 0;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
+    border-top: 3px solid hsl(360, 64%, 55%);
+  }
+  h3,
+  p {
+    font-family: "Roboto";
+    font-size: 18px;
+    color: hsl(42, 15%, 13%);
+    margin: 0;
+  }
+  p {
+    margin: 16px 0;
+    color: hsl(41, 9%, 35%);
+  }
+  a {
+    all: unset;
+    background-color: hsl(44, 92%, 63%);
+    color: hsl(42, 15%, 13%);
+    padding: 12px 0;
+    border-radius: 100px;
+    box-shadow: inset 0 1px 0 hsl(48, 95%, 76%), 0 1px 3px rgba(0, 0, 0, 0.12),
+      0 1px 2px rgba(0, 0, 0, 0.24);
+    display: block;
+    width: 128px;
+    margin-left: auto;
+    text-align: center;
+    cursor: pointer;
+    font-family: "Nunito";
+    font-size: 18px;
+  }
+  a:active {
+    box-shadow: none;
+  }
+`
+
 const IndexPage = ({
   data: {
     file: {
       childImageSharp: { fluid },
     },
+    allMarkdownRemark: { nodes },
   },
 }) => (
   <Layout>
     <SEO title="Home" description="Dillon Morse's website" />
     <Hero>
       <p>
-        <b>Dillon Morse</b> blogs about <b>programming</b> and <b>literature</b>
+        <b>Dillon</b> blogs about <b>computer programming</b> and{" "}
+        <b>literature</b>
       </p>
       <HeroImage fluid={fluid} />
     </Hero>
+    <Blog>
+      {nodes.map(({ excerpt, frontmatter: { path, title } }) => (
+        <BlogPostCard>
+          <h3>{title}</h3>
+          <p>{excerpt}</p>
+          <Link to={path}>Read More</Link>
+        </BlogPostCard>
+      ))}
+    </Blog>
   </Layout>
 )
 
@@ -58,6 +117,15 @@ export const pageQuery = graphql`
       childImageSharp {
         fluid(srcSetBreakpoints: [400, 600, 960, 1280, 1920]) {
           ...GatsbyImageSharpFluid
+        }
+      }
+    }
+    allMarkdownRemark {
+      nodes {
+        excerpt
+        frontmatter {
+          path
+          title
         }
       }
     }
