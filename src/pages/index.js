@@ -48,16 +48,29 @@ const BlogPostCard = styled.div`
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
     border-top: 3px solid hsl(360, 64%, 55%);
   }
-  h3,
-  p {
+  & > h3,
+  & > p {
     font-family: "Roboto";
     font-size: 18px;
     color: hsl(42, 15%, 13%);
     margin: 0;
   }
-  p {
+  & > p {
     margin: 16px 0;
     color: hsl(41, 9%, 35%);
+  }
+`
+
+const CardControls = styled.div`
+  & {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  p {
+    color: hsl(41, 8%, 61%);
+    display: inline;
+    margin: 0;
   }
   a {
     all: unset;
@@ -69,7 +82,6 @@ const BlogPostCard = styled.div`
       0 1px 2px rgba(0, 0, 0, 0.24);
     display: block;
     width: 128px;
-    margin-left: auto;
     text-align: center;
     cursor: pointer;
     font-family: "Nunito";
@@ -98,11 +110,14 @@ const IndexPage = ({
       <HeroImage fluid={fluid} />
     </Hero>
     <Blog>
-      {nodes.map(({ excerpt, frontmatter: { path, title } }) => (
+      {nodes.map(({ excerpt, frontmatter: { date, path, title } }) => (
         <BlogPostCard>
           <h3>{title}</h3>
           <p>{excerpt}</p>
-          <Link to={path}>Read More</Link>
+          <CardControls>
+            <p>{date}</p>
+            <Link to={path}>Read More</Link>
+          </CardControls>
         </BlogPostCard>
       ))}
     </Blog>
@@ -124,6 +139,7 @@ export const pageQuery = graphql`
       nodes {
         excerpt
         frontmatter {
+          date
           path
           title
         }
