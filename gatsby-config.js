@@ -43,7 +43,6 @@ module.exports = {
     },
     "gatsby-transformer-remark",
     "gatsby-plugin-offline",
-    "gatsby-plugin-material-ui",
-    "gatsby-plugin-loadable-components-ssr",
+    "gatsby-plugin-styled-components",
   ],
 }
