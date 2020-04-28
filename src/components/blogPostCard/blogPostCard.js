@@ -12,7 +12,7 @@ const BlogPostCard = ({ title, description, date, path, ...props }) => (
       {description}
     </Typography>
     <Box display="flex" alignItems="baseline" justifyContent="space-between">
-      <Typography color="gray.5" fontSize={3} my={0}>
+      <Typography color="gray.3" fontSize={2} my={0}>
         {date}
       </Typography>
       <Button as={Link} to={path}>
