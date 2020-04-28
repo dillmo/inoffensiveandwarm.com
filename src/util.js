@@ -3,3 +3,6 @@ export const handleButtonEvent = f => x => event => {
     f(x)
   }
 }
+
+export const access = (str, obj) =>
+  str.split(".").reduce((acc, prop) => acc?.[prop], obj) ?? str

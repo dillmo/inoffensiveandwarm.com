@@ -24,3 +24,16 @@ export const UI = () => (
     Next Page
   </Typography>
 )
+
+export const EmphasizedText = () => (
+  <Typography
+    ml={4}
+    mt={4}
+    fontFamily="heading"
+    fontSize={6}
+    color="gray.4"
+    emColor="gray.0"
+  >
+    <em>Emphasize</em> text with <em>{"<em>"}</em> tags
+  </Typography>
+)
