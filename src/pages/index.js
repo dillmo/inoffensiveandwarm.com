@@ -1,10 +1,11 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import Img from "gatsby-image"
 import styled from "styled-components"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import { BlogPostCard, Box } from "../components"
 
 const Hero = styled.section`
   & {
@@ -32,66 +33,6 @@ const HeroImage = styled(Img)`
   }
 `
 
-const Blog = styled.section`
-  & {
-    background-color: #e8e6e1;
-    padding: 4px 24px;
-  }
-`
-
-const BlogPostCard = styled.div`
-  & {
-    background-color: #faf9f7;
-    margin: 24px 0;
-    padding: 24px;
-    border-radius: 16px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15), 0 3px 6px rgba(0, 0, 0, 0.1);
-    border-top: 3px solid hsl(360, 64%, 55%);
-  }
-  & > h3,
-  & > p {
-    font-family: "Roboto";
-    font-size: 18px;
-    color: hsl(42, 15%, 13%);
-    margin: 0;
-  }
-  & > p {
-    margin: 16px 0;
-    color: hsl(41, 9%, 35%);
-  }
-`
-
-const CardControls = styled.div`
-  & {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-  }
-  p {
-    color: hsl(41, 8%, 61%);
-    display: inline;
-    margin: 0;
-  }
-  a {
-    all: unset;
-    background-color: hsl(44, 92%, 63%);
-    color: hsl(42, 15%, 13%);
-    padding: 12px 0;
-    border-radius: 100px;
-    box-shadow: inset 0 1px 0 hsl(48, 95%, 76%), 0 1px 3px rgba(0, 0, 0, 0.12),
-      0 1px 2px rgba(0, 0, 0, 0.24);
-    display: block;
-    width: 128px;
-    text-align: center;
-    cursor: pointer;
-    font-family: "Nunito";
-    font-size: 18px;
-  }
-  a:active {
-    box-shadow: none;
-  }
-`
-
 const IndexPage = ({
   data: {
     file: {
@@ -109,18 +50,18 @@ const IndexPage = ({
       </p>
       <HeroImage fluid={fluid} />
     </Hero>
-    <Blog>
+    <Box as="section" px={6}>
       {nodes.map(({ excerpt, frontmatter: { date, path, title } }) => (
-        <BlogPostCard>
-          <h3>{title}</h3>
-          <p>{excerpt}</p>
-          <CardControls>
-            <p>{date}</p>
-            <Link to={path}>Read More</Link>
-          </CardControls>
-        </BlogPostCard>
+        <BlogPostCard
+          description={excerpt}
+          date={date}
+          path={path}
+          title={title}
+          my={6}
+          mx="auto"
+        />
       ))}
-    </Blog>
+    </Box>
   </Layout>
 )
 

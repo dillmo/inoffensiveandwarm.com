@@ -4,14 +4,7 @@ import { Link } from "gatsby"
 import { Box, Button, Card, Typography } from ".."
 
 const BlogPostCard = ({ title, description, date, path, ...props }) => (
-  <Card
-    width="100%"
-    maxWidth={384}
-    borderTopWidth={3}
-    borderTopStyle="solid"
-    borderTopColor="red.5"
-    {...props}
-  >
+  <Card width="100%" maxWidth={384} variant="emphasized" {...props}>
     <Typography fontSize={3} as="h3" fontWeight="bold" my={0}>
       {title}
     </Typography>
