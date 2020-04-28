@@ -2,6 +2,7 @@ import React from "react"
 import { configure } from "@storybook/react"
 import { action } from "@storybook/addon-actions"
 import { addDecorator } from "@storybook/react"
+import { withA11y } from "@storybook/addon-a11y"
 import { ThemeProvider } from "styled-components"
 
 import "normalize.css"
@@ -33,3 +34,5 @@ window.___navigate = pathname => {
 addDecorator(storyFn => (
   <ThemeProvider theme={theme}>{storyFn()}</ThemeProvider>
 ))
+
+addDecorator(withA11y)
