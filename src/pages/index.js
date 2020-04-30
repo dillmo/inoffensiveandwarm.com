@@ -5,7 +5,7 @@ import styled from "styled-components"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { BlogPostCard, Box } from "../components"
+import { BlogPostListing } from "../components"
 
 const Hero = styled.section`
   & {
@@ -38,7 +38,6 @@ const IndexPage = ({
     file: {
       childImageSharp: { fluid },
     },
-    allMarkdownRemark: { nodes },
   },
 }) => (
   <Layout>
@@ -50,18 +49,7 @@ const IndexPage = ({
       </p>
       <HeroImage fluid={fluid} />
     </Hero>
-    <Box as="section" px={6}>
-      {nodes.map(({ excerpt, frontmatter: { date, path, title } }) => (
-        <BlogPostCard
-          description={excerpt}
-          date={date}
-          path={path}
-          title={title}
-          my={6}
-          mx="auto"
-        />
-      ))}
-    </Box>
+    <BlogPostListing />
   </Layout>
 )
 
@@ -73,16 +61,6 @@ export const pageQuery = graphql`
       childImageSharp {
         fluid(srcSetBreakpoints: [400, 600, 960, 1280, 1920]) {
           ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    allMarkdownRemark {
-      nodes {
-        excerpt
-        frontmatter {
-          date
-          path
-          title
         }
       }
     }

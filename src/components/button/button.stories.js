@@ -8,7 +8,7 @@ export default {
   title: "Atoms/Button",
 }
 
-export const Default = () => (
+export const Primary = () => (
   <Button onClick={action("onClick")} ml={4} mt={4}>
     Read More
   </Button>

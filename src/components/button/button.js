@@ -4,7 +4,6 @@ import { color, shadow, space, typography, variant } from "styled-system"
 const Button = styled.button(
   {
     all: "unset",
-    color: "hsl(42, 15%, 13%)",
     borderRadius: "100px",
     display: "inline-block",
     textAlign: "center",
@@ -21,12 +20,13 @@ const Button = styled.button(
   variant({
     variants: {
       primary: {
+        color: "gray.0",
         bg: "yellow.5",
         boxShadow:
-          "inset 0 1px 0 hsl(48, 94%, 68%), 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)",
-        py: 3,
+          "0px 3px 0px hsl(40, 15%, 80%), inset 0px 2px 0px hsl(48, 94%, 68%)",
+        py: 2,
         px: 5,
-        fontSize: 3,
+        fontSize: 4,
       },
     },
   })

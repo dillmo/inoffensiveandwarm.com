@@ -9,12 +9,23 @@ export default {
 const description =
   "Debitis et quia vel illo id molestiae quo. Facere mollitia qui cumque sunt quasi omnis quos quibusdam. Adipisci eum ratione molestias…"
 
-export const Small = () => (
+export const Yellow = () => (
   <BlogPostCard
     title={"My First Post"}
     description={description}
     date="2020-04-22"
     path="/my-first-post"
     m={5}
+  />
+)
+
+export const Red = () => (
+  <BlogPostCard
+    title={"My First Post"}
+    description={description}
+    date="2020-04-22"
+    path="/my-first-post"
+    m={5}
+    variant="red"
   />
 )

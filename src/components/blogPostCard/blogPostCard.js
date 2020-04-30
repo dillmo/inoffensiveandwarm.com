@@ -1,10 +1,27 @@
 import React from "react"
 import PropTypes from "prop-types"
 import { Link } from "gatsby"
-import { Box, Button, Card, Typography } from ".."
+import { Box, Button, Typography } from ".."
 
-const BlogPostCard = ({ title, description, date, path, ...props }) => (
-  <Card width="100%" maxWidth={384} variant="emphasized" {...props}>
+const BlogPostCard = ({
+  title,
+  description,
+  date,
+  path,
+  variant,
+  ...props
+}) => (
+  <Box
+    width="100%"
+    maxWidth={512}
+    bg="gray.9"
+    py={5}
+    px={3}
+    borderLeftWidth="10px"
+    borderLeftStyle="solid"
+    borderLeftColor={variant === "red" ? "red.4" : "yellow.3"}
+    {...props}
+  >
     <Typography fontSize={3} as="h3" fontWeight="bold" my={0}>
       {title}
     </Typography>
@@ -19,7 +36,7 @@ const BlogPostCard = ({ title, description, date, path, ...props }) => (
         Read More
       </Button>
     </Box>
-  </Card>
+  </Box>
 )
 
 BlogPostCard.propTypes = {
@@ -27,6 +44,11 @@ BlogPostCard.propTypes = {
   description: PropTypes.string,
   date: PropTypes.string,
   path: PropTypes.string,
+  variant: PropTypes.string,
+}
+
+BlogPostCard.defaultProps = {
+  variant: "yellow",
 }
 
 export default BlogPostCard
