@@ -21,7 +21,7 @@
     "gatsby-transformer-remark": "^2.7.3",
     "gatsby-transformer-sharp": "^2.4.6",
     "prop-types": "^15.7.2",
-    "react": "0.0.0-experimental-e5d06e34b",
+    "react": "0.14.0",
     "react-dom": "0.0.0-experimental-e5d06e34b",
     "react-helmet-async": "^1.0.5",
     "typeface-roboto": "0.0.75"
